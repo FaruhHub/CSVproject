@@ -1,0 +1,72 @@
+﻿@model CSVproject.Models.FileModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .display_attention {
+            display: none;
+            color: red;
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            font-size: 85%;
+        }
+
+        .display_required {
+            display: none;
+            color: red;
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            font-size: 85%;
+        }
+
+        .display_accepted {
+            display: none;
+            color: green;
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            font-size: 85%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <br />
+            <span>Select File:</span>
+            @Html.TextBoxFor(m => m.PostedFile, new { type = "file" })
+            <br />
+            @Html.ValidationMessageFor(m => m.PostedFile, "", new { @class = "error" })
+            <br />
+            <input type="submit" value="Upload" />
+            <br />
+            <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+            <br />
+        }
+    </div>
+    <div id="update_panel">
+    </div>
+</body>
+</html>
+
+
