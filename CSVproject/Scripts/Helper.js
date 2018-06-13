@@ -12,6 +12,6 @@
 
     } else {
         $('#mod-progress').modal('hide');
-        window.progressBarActive = undefined;
+        window.progressBarActive = false;
     }
 }

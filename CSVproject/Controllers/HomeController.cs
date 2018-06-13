@@ -81,7 +81,7 @@ namespace CSVproject.Controllers
 
             using (CsvReader csvReader = new CsvReader(new StreamReader(path + fileName), hasHeaders: true))
             {
-                //THIS COULD BE SOME LIST OF DATA
+                //getting rows count number
                 int itemsCount = System.IO.File.ReadLines(path + fileName).Count();
 
                 int i = 0;
@@ -92,7 +92,7 @@ namespace CSVproject.Controllers
                     {
                         dt.Rows[i][col] = csvReader[col];
                     }
-                    //CALLING A FUNCTION THAT CALCULATES PERCENTAGE AND SENDS THE DATA TO THE CLIENT
+                    //SignalR. CALLING A FUNCTION THAT CALCULATES PERCENTAGE AND SENDS THE DATA TO THE CLIENT
                     Functions.SendProgress("Process in progress...", i, itemsCount);
                     i++;
                 }
